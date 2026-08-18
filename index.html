@@ -1,0 +1,2039 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Shoes Wala - The Ultimate Red & Blue Sneaker Haven. Shop authentic limited edition Crimson Flame & Cobalt Frost kicks with next-gen cushioning and street style.">
+  <title>SHOES WALA | Red & Blue Edition Kicks & Sneakers</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    /* ==========================================================================
+       CSS VARIABLES & THEME TOKENS
+       ========================================================================== */
+    :root {
+      --bg-dark: #07090e;
+      --bg-card: rgba(15, 20, 32, 0.78);
+      --bg-card-hover: rgba(22, 29, 48, 0.92);
+      --border-glass: rgba(255, 255, 255, 0.08);
+
+      /* Red Fire Palette */
+      --red-primary: #ff2a5f;
+      --red-secondary: #ff597b;
+      --red-dark: #b80d36;
+      --red-glow: rgba(255, 42, 95, 0.45);
+      --red-glow-soft: rgba(255, 42, 95, 0.15);
+
+      /* Blue Ice Palette */
+      --blue-primary: #0070f3;
+      --blue-secondary: #00d2ff;
+      --blue-dark: #004bc4;
+      --blue-glow: rgba(0, 210, 255, 0.45);
+      --blue-glow-soft: rgba(0, 112, 243, 0.15);
+
+      /* Duality Gradient */
+      --duality-gradient: linear-gradient(135deg, var(--red-primary) 0%, #a855f7 50%, var(--blue-secondary) 100%);
+      --duality-glow: 0 10px 30px rgba(255, 42, 95, 0.35), 0 10px 30px rgba(0, 210, 255, 0.35);
+
+      /* Text */
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+
+      /* UI Tokens */
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 22px;
+      --radius-full: 9999px;
+      --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* ==========================================================================
+       RESET & BASE STYLES
+       ========================================================================== */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      overflow-x: hidden;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg-dark);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(to bottom, var(--red-primary), var(--blue-secondary));
+      border-radius: var(--radius-full);
+    }
+
+    /* Ambient Background Glows */
+    .ambient-glow {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(140px);
+      z-index: -1;
+      pointer-events: none;
+      opacity: 0.45;
+      animation: pulseGlow 12s infinite alternate ease-in-out;
+    }
+
+    .ambient-red {
+      top: -10%;
+      left: -10%;
+      width: 550px;
+      height: 550px;
+      background: radial-gradient(circle, var(--red-primary) 0%, transparent 70%);
+    }
+
+    .ambient-blue {
+      bottom: -10%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, var(--blue-primary) 0%, transparent 70%);
+      animation-delay: -6s;
+    }
+
+    @keyframes pulseGlow {
+      0% { transform: scale(1) translate(0, 0); opacity: 0.35; }
+      50% { transform: scale(1.2) translate(30px, 20px); opacity: 0.55; }
+      100% { transform: scale(0.9) translate(-20px, -15px); opacity: 0.4; }
+    }
+
+    /* Mouse Glow Follower */
+    .cursor-glow {
+      position: fixed;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 42, 95, 0.12) 0%, rgba(0, 210, 255, 0.12) 40%, transparent 70%);
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+      mix-blend-mode: screen;
+    }
+
+    /* Typography */
+    h1, h2, h3, h4, .font-heading {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+    }
+
+    .text-red {
+      color: var(--red-primary);
+      text-shadow: 0 0 15px var(--red-glow);
+    }
+
+    .text-blue {
+      color: var(--blue-secondary);
+      text-shadow: 0 0 15px var(--blue-glow);
+    }
+
+    .text-gradient {
+      background: linear-gradient(135deg, #ff2a5f 0%, #ff6b8b 35%, #00d2ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .glass-panel {
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-lg);
+      transition: var(--transition);
+    }
+
+    .glass-panel:hover {
+      border-color: rgba(255, 255, 255, 0.18);
+    }
+
+    /* ==========================================================================
+       BUTTONS & BADGES
+       ========================================================================== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 26px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      border-radius: var(--radius-full);
+      text-decoration: none;
+      cursor: pointer;
+      transition: var(--transition);
+      border: none;
+      position: relative;
+      letter-spacing: 0.02em;
+    }
+
+    .btn-red {
+      background: linear-gradient(135deg, var(--red-primary), var(--red-dark));
+      color: #ffffff;
+      box-shadow: 0 6px 20px -2px var(--red-glow);
+    }
+
+    .btn-red:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(255, 42, 95, 0.65);
+    }
+
+    .btn-blue {
+      background: linear-gradient(135deg, var(--blue-primary), var(--blue-dark));
+      color: #ffffff;
+      box-shadow: 0 6px 20px -2px var(--blue-glow);
+    }
+
+    .btn-blue:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(0, 112, 243, 0.65);
+    }
+
+    .btn-duality {
+      background: linear-gradient(135deg, var(--red-primary) 0%, #7928ca 50%, var(--blue-secondary) 100%);
+      color: #ffffff;
+      box-shadow: var(--duality-glow);
+      background-size: 200% auto;
+    }
+
+    .btn-duality:hover {
+      background-position: right center;
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 12px 35px rgba(255, 42, 95, 0.5), 0 12px 35px rgba(0, 210, 255, 0.5);
+    }
+
+    .btn-outline {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-main);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.35);
+      transform: translateY(-2px);
+    }
+
+    .btn-sm {
+      padding: 8px 16px;
+      font-size: 0.85rem;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .badge-red {
+      background: rgba(255, 42, 95, 0.18);
+      color: var(--red-secondary);
+      border: 1px solid rgba(255, 42, 95, 0.4);
+    }
+
+    .badge-blue {
+      background: rgba(0, 210, 255, 0.18);
+      color: var(--blue-secondary);
+      border: 1px solid rgba(0, 210, 255, 0.4);
+    }
+
+    .badge-dual {
+      background: linear-gradient(90deg, rgba(255, 42, 95, 0.25), rgba(0, 210, 255, 0.25));
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    /* ==========================================================================
+       NAVBAR
+       ========================================================================== */
+    .navbar-wrapper {
+      position: fixed;
+      top: 18px;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+      padding: 0 20px;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1200px;
+      padding: 12px 28px;
+      background: rgba(8, 12, 22, 0.82);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-full);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    }
+
+    .logo-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text-main);
+    }
+
+    .logo-box {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--red-primary), var(--blue-primary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 20px rgba(255, 42, 95, 0.5);
+    }
+
+    .logo-text {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-item a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: var(--transition);
+      position: relative;
+      padding: 6px 0;
+    }
+
+    .nav-item a:hover {
+      color: var(--text-main);
+    }
+
+    .nav-item a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--red-primary), var(--blue-secondary));
+      transition: width 0.3s ease;
+      border-radius: var(--radius-full);
+    }
+
+    .nav-item a:hover::after {
+      width: 100%;
+    }
+
+    .nav-controls {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .cart-btn {
+      position: relative;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--text-main);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .cart-btn:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .cart-badge {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      background: var(--red-primary);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 800;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 10px var(--red-primary);
+    }
+
+    /* ==========================================================================
+       HERO SECTION WITH REAL SNEAKER PHOTOGRAPHY
+       ========================================================================== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 130px;
+      padding-bottom: 70px;
+      position: relative;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius-full);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    .hero-title {
+      font-size: clamp(2.8rem, 5.5vw, 4.8rem);
+      line-height: 1.05;
+      margin-bottom: 22px;
+    }
+
+    .hero-description {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      margin-bottom: 34px;
+      max-width: 520px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .hero-stats-row {
+      display: flex;
+      gap: 32px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .hero-stat h5 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .hero-stat p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* Hero Interactive Sneaker Stage */
+    .sneaker-stage {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .stage-glow-disc {
+      position: absolute;
+      width: 380px;
+      height: 380px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--red-glow) 0%, var(--blue-glow) 50%, transparent 75%);
+      filter: blur(50px);
+      z-index: 0;
+      transition: var(--transition);
+      animation: rotateDisc 20s linear infinite;
+    }
+
+    @keyframes rotateDisc {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .hero-shoe-card {
+      width: 100%;
+      max-width: 480px;
+      background: rgba(14, 18, 30, 0.75);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+      transition: var(--transition);
+    }
+
+    .hero-shoe-card:hover {
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    .shoe-display-window {
+      height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius-md);
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.04) 0%, rgba(5, 7, 12, 0.8) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .hero-shoe-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: var(--radius-md);
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+      animation: floatShoe 4s ease-in-out infinite alternate;
+    }
+
+    @keyframes floatShoe {
+      0% { transform: translateY(-4px) scale(1); }
+      100% { transform: translateY(8px) scale(1.02); }
+    }
+
+    .colorway-switcher {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(0, 0, 0, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-md);
+      padding: 10px 16px;
+      margin-top: 20px;
+    }
+
+    .colorway-options {
+      display: flex;
+      gap: 10px;
+    }
+
+    .color-dot {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .color-dot.active {
+      border-color: #fff;
+      transform: scale(1.18);
+      box-shadow: 0 0 14px rgba(255, 255, 255, 0.7);
+    }
+
+    .color-dot-dual { background: linear-gradient(135deg, #ff2a5f 50%, #00d2ff 50%); }
+    .color-dot-red { background: linear-gradient(135deg, #ff2a5f, #990022); }
+    .color-dot-blue { background: linear-gradient(135deg, #00d2ff, #004bc4); }
+
+    /* ==========================================================================
+       COLLECTIONS & PRODUCT CATALOG WITH SNEAKER PHOTOS
+       ========================================================================== */
+    section {
+      padding: 90px 0;
+      position: relative;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 50px;
+    }
+
+    .section-subtitle {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      margin-bottom: 16px;
+    }
+
+    /* Filter Tabs */
+    .filter-tabs {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+
+    .filter-tab {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-muted);
+      padding: 10px 22px;
+      border-radius: var(--radius-full);
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .filter-tab:hover {
+      color: var(--text-main);
+      background: rgba(255, 255, 255, 0.09);
+    }
+
+    .filter-tab.active {
+      background: var(--text-main);
+      color: #000;
+      border-color: var(--text-main);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+    }
+
+    .filter-tab.active.tab-red {
+      background: var(--red-primary);
+      color: #fff;
+      border-color: var(--red-primary);
+      box-shadow: 0 0 20px var(--red-glow);
+    }
+
+    .filter-tab.active.tab-blue {
+      background: var(--blue-secondary);
+      color: #000;
+      border-color: var(--blue-secondary);
+      box-shadow: 0 0 20px var(--blue-glow);
+    }
+
+    /* Sneaker Catalog Grid */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 30px;
+    }
+
+    .product-card {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6);
+    }
+
+    .product-card.card-red:hover {
+      border-color: var(--red-primary);
+      box-shadow: 0 15px 35px -5px var(--red-glow-soft);
+    }
+
+    .product-card.card-blue:hover {
+      border-color: var(--blue-secondary);
+      box-shadow: 0 15px 35px -5px var(--blue-glow-soft);
+    }
+
+    .product-card.card-dual:hover {
+      border-color: rgba(255, 255, 255, 0.3);
+      box-shadow: var(--duality-glow);
+    }
+
+    .card-badge-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .wishlist-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-muted);
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .wishlist-btn:hover {
+      color: var(--red-primary);
+      background: rgba(255, 42, 95, 0.15);
+      border-color: var(--red-primary);
+    }
+
+    .product-image-box {
+      height: 230px;
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius-md);
+      background: #04060b;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .product-image-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: var(--radius-md);
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease;
+    }
+
+    .product-card:hover .product-image-box img {
+      transform: scale(1.08) rotate(-2deg);
+      filter: brightness(1.06);
+    }
+
+    .product-info {
+      margin-top: 16px;
+    }
+
+    .product-title {
+      font-size: 1.25rem;
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+
+    .product-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .rating {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      color: #fbbf24;
+      font-weight: 600;
+    }
+
+    /* Size Selector Pills */
+    .size-picker {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .size-pill {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .size-pill:hover {
+      color: var(--text-main);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .size-pill.active {
+      background: #ffffff;
+      color: #000000;
+      font-weight: 700;
+      border-color: #ffffff;
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .price-tag {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .price-tag .old-price {
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      text-decoration: line-through;
+      margin-left: 6px;
+      font-weight: 400;
+    }
+
+    /* ==========================================================================
+       INTERACTIVE DUALITY QUIZ / VIBE MATCHER
+       ========================================================================== */
+    .vibe-box {
+      background: linear-gradient(180deg, rgba(20, 26, 44, 0.8) 0%, rgba(10, 14, 25, 0.95) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius-lg);
+      padding: 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .vibe-split-controls {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .vibe-card-select {
+      background: rgba(255, 255, 255, 0.03);
+      border: 2px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .vibe-card-select.red:hover, .vibe-card-select.red.selected {
+      border-color: var(--red-primary);
+      background: rgba(255, 42, 95, 0.08);
+      box-shadow: 0 0 25px var(--red-glow-soft);
+    }
+
+    .vibe-card-select.blue:hover, .vibe-card-select.blue.selected {
+      border-color: var(--blue-secondary);
+      background: rgba(0, 210, 255, 0.08);
+      box-shadow: 0 0 25px var(--blue-glow-soft);
+    }
+
+    /* ==========================================================================
+       TESTIMONIALS & STREET CRED
+       ========================================================================== */
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .review-card {
+      padding: 30px;
+    }
+
+    .reviewer-info {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+
+    .reviewer-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--red-primary), var(--blue-secondary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    /* ==========================================================================
+       CART SLIDEOUT DRAWER & MODAL
+       ========================================================================== */
+    .cart-drawer-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .cart-drawer-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .cart-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      max-width: 420px;
+      background: #0b0f19;
+      border-left: 1px solid rgba(255, 255, 255, 0.12);
+      z-index: 1001;
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      padding: 28px;
+    }
+
+    .cart-drawer-overlay.open .cart-drawer {
+      transform: translateX(0);
+    }
+
+    .cart-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .close-cart-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+
+    .close-cart-btn:hover {
+      color: var(--text-main);
+    }
+
+    .cart-items-list {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .cart-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: rgba(255, 255, 255, 0.03);
+      padding: 10px 12px;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .cart-item-img {
+      width: 58px;
+      height: 58px;
+      background: #000;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .cart-item-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .cart-item-details {
+      flex: 1;
+    }
+
+    .cart-item-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .cart-item-price {
+      font-size: 0.85rem;
+      color: var(--blue-secondary);
+      font-weight: 600;
+    }
+
+    .cart-item-remove {
+      background: none;
+      border: none;
+      color: var(--text-dim);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .cart-item-remove:hover {
+      color: var(--red-primary);
+    }
+
+    .cart-footer {
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .cart-total-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    /* Promo Code Input */
+    .promo-box {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .promo-input {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-sm);
+      padding: 8px 12px;
+      color: #fff;
+      outline: none;
+      font-family: inherit;
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: rgba(15, 20, 32, 0.95);
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius-md);
+      padding: 14px 22px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+      transform: translateY(120%);
+      opacity: 0;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+      z-index: 9999;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* Checkout Modal */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(10px);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-overlay.open {
+      display: flex;
+    }
+
+    .modal-content {
+      background: #0e121f;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      max-width: 480px;
+      width: 100%;
+      text-align: center;
+      position: relative;
+    }
+
+    /* ==========================================================================
+       FOOTER
+       ========================================================================== */
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 70px 0 30px;
+      background: #04060a;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 50px;
+    }
+
+    .footer-heading {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: var(--blue-secondary);
+      transform: translateX(3px);
+      display: inline-block;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 25px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 0.85rem;
+      color: var(--text-dim);
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero-description {
+        margin: 0 auto 34px;
+      }
+      .hero-buttons, .hero-stats-row {
+        justify-content: center;
+      }
+      .vibe-box {
+        grid-template-columns: 1fr;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-menu {
+        display: none;
+      }
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient Light Orbs -->
+  <div class="ambient-glow ambient-red" id="ambientRed"></div>
+  <div class="ambient-glow ambient-blue" id="ambientBlue"></div>
+
+  <!-- Mouse Spotlight Cursor Glow -->
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <!-- Navigation Bar -->
+  <header class="navbar-wrapper">
+    <nav class="navbar">
+      <a href="#home" class="logo-link">
+        <div class="logo-box">
+          <i data-lucide="zap" style="color: #fff; width: 22px; height: 22px;"></i>
+        </div>
+        <div class="logo-text">
+          <span class="text-red">SHOES</span> <span class="text-blue">WALA</span>
+        </div>
+      </a>
+
+      <ul class="nav-menu">
+        <li class="nav-item"><a href="#home">Home</a></li>
+        <li class="nav-item"><a href="#catalog">Collections</a></li>
+        <li class="nav-item"><a href="#home">Customizer</a></li>
+        <li class="nav-item"><a href="#vibe">Vibe Finder</a></li>
+        <li class="nav-item"><a href="#reviews">Street Reviews</a></li>
+      </ul>
+
+      <div class="nav-controls">
+        <button class="cart-btn" onclick="toggleCartDrawer()" aria-label="Open Shopping Cart">
+          <i data-lucide="shopping-bag" style="width: 20px; height: 20px;"></i>
+          <span class="cart-badge" id="cartBadge">2</span>
+        </button>
+        <a href="#catalog" class="btn btn-duality btn-sm">Shop Drops</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <main>
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-text-content">
+            <div class="hero-tag">
+              <span class="badge badge-red">🔥 Crimson Flame</span>
+              <span>meets</span>
+              <span class="badge badge-blue">❄️ Cobalt Frost</span>
+            </div>
+
+            <h1 class="hero-title">
+              Step Into <br>
+              <span class="text-red">Pure Fire</span> & <span class="text-blue">Ice Cold</span> Style.
+            </h1>
+
+            <p class="hero-description">
+              Welcome to <strong>Shoes Wala</strong> — the epicenter of limited edition red & blue streetwear kicks, cyber runners, and hyper-cushioned court beasts engineered for fearless movers.
+            </p>
+
+            <div class="hero-buttons">
+              <a href="#catalog" class="btn btn-red" onclick="filterCatalog('red', document.querySelectorAll('.filter-tab')[1])">
+                <i data-lucide="flame" style="width: 18px; height: 18px;"></i>
+                <span>Explore Red Drops</span>
+              </a>
+              <a href="#catalog" class="btn btn-blue" onclick="filterCatalog('blue', document.querySelectorAll('.filter-tab')[2])">
+                <i data-lucide="sparkles" style="width: 18px; height: 18px;"></i>
+                <span>Explore Blue Drops</span>
+              </a>
+            </div>
+
+            <div class="hero-stats-row">
+              <div class="hero-stat">
+                <h5>50K+</h5>
+                <p>Pairs Dropped Worldwide</p>
+              </div>
+              <div class="hero-stat">
+                <h5>4.9 ★</h5>
+                <p>Over 12,000 Verified Reviews</p>
+              </div>
+              <div class="hero-stat">
+                <h5>24-Hr</h5>
+                <p>Express Dispatch</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Interactive Sneaker Stage with High-Res Photo -->
+          <div class="sneaker-stage">
+            <div class="stage-glow-disc" id="heroStageGlow"></div>
+            
+            <div class="hero-shoe-card">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                <span class="badge badge-dual">⚡ Flagship Release</span>
+                <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--text-dim);">EDITION #01</span>
+              </div>
+
+              <!-- Interactive Hero Sneaker Photo Display -->
+              <div class="shoe-display-window">
+                <img id="heroShoeImg" class="hero-shoe-img" src="https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=1000&q=85" alt="SHOES WALA Duality Pro X Sneaker" />
+              </div>
+
+              <div style="margin-top: 15px;">
+                <h3 class="font-heading" id="heroShoeTitle" style="font-size: 1.45rem;">SHOES WALA Duality High-Top Pro</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Limited edition streetwear high-top with signature red & blue energy paneling.</p>
+              </div>
+
+              <!-- Colorway Selector -->
+              <div class="colorway-switcher">
+                <span style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted);">Switch Colorway:</span>
+                <div class="colorway-options">
+                  <div class="color-dot color-dot-dual active" onclick="setHeroColorway('dual', this)" title="Dual Split Edition"></div>
+                  <div class="color-dot color-dot-red" onclick="setHeroColorway('red', this)" title="Crimson Blaze Edition"></div>
+                  <div class="color-dot color-dot-blue" onclick="setHeroColorway('blue', this)" title="Cobalt Frost Edition"></div>
+                </div>
+              </div>
+
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
+                <div>
+                  <div style="font-size: 0.8rem; color: var(--text-dim);">Release Price</div>
+                  <div class="price-tag">$189.99</div>
+                </div>
+                <button class="btn btn-duality" onclick="addToCart('SHOES WALA Duality High-Top Pro', 189.99, 'Dual Split', 'https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=600&q=80')">
+                  <i data-lucide="plus" style="width: 16px; height: 16px;"></i>
+                  <span>Add to Bag</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Product Collections Catalog -->
+    <section id="catalog">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle text-gradient">// EXCLUSIVE CATALOG</span>
+          <h2 class="section-title">The <span class="text-red">Red</span> & <span class="text-blue">Blue</span> Lineup</h2>
+          <p style="color: var(--text-muted);">Explore hand-crafted street-ready sneakers with high-definition real product photography.</p>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="filter-tabs">
+          <button class="filter-tab active" onclick="filterCatalog('all', this)">All Sneakers (6)</button>
+          <button class="filter-tab tab-red" onclick="filterCatalog('red', this)">🔥 Crimson Red Line (2)</button>
+          <button class="filter-tab tab-blue" onclick="filterCatalog('blue', this)">❄️ Cobalt Blue Line (2)</button>
+          <button class="filter-tab" onclick="filterCatalog('dual', this)">⚡ Dual Fusion (2)</button>
+        </div>
+
+        <!-- Sneaker Grid -->
+        <div class="product-grid" id="productGrid">
+
+          <!-- Shoe 1: Crimson Blaze Ultra -->
+          <div class="glass-panel product-card card-red" data-category="red">
+            <div class="card-badge-row">
+              <span class="badge badge-red">🔥 Best Seller</span>
+              <button class="wishlist-btn" onclick="toggleWishlist(this)" aria-label="Add to wishlist">
+                <i data-lucide="heart" style="width: 16px; height: 16px;"></i>
+              </button>
+            </div>
+            
+            <div class="product-image-box">
+              <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80" alt="Crimson Blaze Ultra Sneaker" loading="lazy" />
+            </div>
+
+            <div class="product-info">
+              <h4 class="product-title">Crimson Blaze Ultra</h4>
+              <div class="product-meta">
+                <div class="rating"><i data-lucide="star" style="width: 14px; height: 14px; fill: #fbbf24;"></i> 4.9 (420)</div>
+                <span>• Road Performance</span>
+              </div>
+              <div class="size-picker">
+                <span class="size-pill" onclick="selectSize(this)">US 8</span>
+                <span class="size-pill active" onclick="selectSize(this)">US 9</span>
+                <span class="size-pill" onclick="selectSize(this)">US 10</span>
+                <span class="size-pill" onclick="selectSize(this)">US 11</span>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <div class="price-tag">$149.99 <span class="old-price">$180</span></div>
+              <button class="btn btn-red btn-sm" onclick="addToCart('Crimson Blaze Ultra', 149.99, 'US 9', 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80')">Add to Bag</button>
+            </div>
+          </div>
+
+          <!-- Shoe 2: Cobalt Frost Drift -->
+          <div class="glass-panel product-card card-blue" data-category="blue">
+            <div class="card-badge-row">
+              <span class="badge badge-blue">❄️ Techwear Drop</span>
+              <button class="wishlist-btn" onclick="toggleWishlist(this)" aria-label="Add to wishlist">
+                <i data-lucide="heart" style="width: 16px; height: 16px;"></i>
+              </button>
+            </div>
+            
+            <div class="product-image-box">
+              <img src="https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?auto=format&fit=crop&w=800&q=80" alt="Cobalt Frost Drift Sneaker" loading="lazy" />
+            </div>
+
+            <div class="product-info">
+              <h4 class="product-title">Cobalt Frost Drift</h4>
+              <div class="product-meta">
+                <div class="rating"><i data-lucide="star" style="width: 14px; height: 14px; fill: #fbbf24;"></i> 4.8 (310)</div>
+                <span>• Aero Air Cushion</span>
+              </div>
+              <div class="size-picker">
+                <span class="size-pill" onclick="selectSize(this)">US 8</span>
+                <span class="size-pill active" onclick="selectSize(this)">US 9</span>
+                <span class="size-pill" onclick="selectSize(this)">US 10</span>
+                <span class="size-pill" onclick="selectSize(this)">US 11</span>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <div class="price-tag">$159.99</div>
+              <button class="btn btn-blue btn-sm" onclick="addToCart('Cobalt Frost Drift', 159.99, 'US 9', 'https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?auto=format&fit=crop&w=600&q=80')">Add to Bag</button>
+            </div>
+          </div>
+
+          <!-- Shoe 3: Duality High-Top Quantum -->
+          <div class="glass-panel product-card card-dual" data-category="dual">
+            <div class="card-badge-row">
+              <span class="badge badge-dual">⚡ Limited Edition</span>
+              <button class="wishlist-btn" onclick="toggleWishlist(this)" aria-label="Add to wishlist">
+                <i data-lucide="heart" style="width: 16px; height: 16px;"></i>
+              </button>
+            </div>
+            
+            <div class="product-image-box">
+              <img src="https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=800&q=80" alt="Duality High-Top Quantum" loading="lazy" />
+            </div>
+
+            <div class="product-info">
+              <h4 class="product-title">Duality High-Top Quantum</h4>
+              <div class="product-meta">
+                <div class="rating"><i data-lucide="star" style="width: 14px; height: 14px; fill: #fbbf24;"></i> 5.0 (580)</div>
+                <span>• Streetwear High-Top</span>
+              </div>
+              <div class="size-picker">
+                <span class="size-pill" onclick="selectSize(this)">US 8</span>
+                <span class="size-pill active" onclick="selectSize(this)">US 9</span>
+                <span class="size-pill" onclick="selectSize(this)">US 10</span>
+                <span class="size-pill" onclick="selectSize(this)">US 11</span>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <div class="price-tag">$199.99 <span class="old-price">$240</span></div>
+              <button class="btn btn-duality btn-sm" onclick="addToCart('Duality High-Top Quantum', 199.99, 'US 9', 'https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=600&q=80')">Add to Bag</button>
+            </div>
+          </div>
+
+          <!-- Shoe 4: Inferno Retro 94 -->
+          <div class="glass-panel product-card card-red" data-category="red">
+            <div class="card-badge-row">
+              <span class="badge badge-red">🔥 Retro Court</span>
+              <button class="wishlist-btn" onclick="toggleWishlist(this)" aria-label="Add to wishlist">
+                <i data-lucide="heart" style="width: 16px; height: 16px;"></i>
+              </button>
+            </div>
+            
+            <div class="product-image-box">
+              <img src="https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?auto=format&fit=crop&w=800&q=80" alt="Inferno Retro 94 Sneaker" loading="lazy" />
+            </div>
+
+            <div class="product-info">
+              <h4 class="product-title">Inferno Retro 94</h4>
+              <div class="product-meta">
+                <div class="rating"><i data-lucide="star" style="width: 14px; height: 14px; fill: #fbbf24;"></i> 4.7 (189)</div>
+                <span>• Vintage High Leather</span>
+              </div>
+              <div class="size-picker">
+                <span class="size-pill" onclick="selectSize(this)">US 8</span>
+                <span class="size-pill active" onclick="selectSize(this)">US 9</span>
+                <span class="size-pill" onclick="selectSize(this)">US 10</span>
+                <span class="size-pill" onclick="selectSize(this)">US 11</span>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <div class="price-tag">$139.99</div>
+              <button class="btn btn-red btn-sm" onclick="addToCart('Inferno Retro 94', 139.99, 'US 9', 'https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?auto=format&fit=crop&w=600&q=80')">Add to Bag</button>
+            </div>
+          </div>
+
+          <!-- Shoe 5: Azure Cyber Glide -->
+          <div class="glass-panel product-card card-blue" data-category="blue">
+            <div class="card-badge-row">
+              <span class="badge badge-blue">❄️ Pure Cyan</span>
+              <button class="wishlist-btn" onclick="toggleWishlist(this)" aria-label="Add to wishlist">
+                <i data-lucide="heart" style="width: 16px; height: 16px;"></i>
+              </button>
+            </div>
+            
+            <div class="product-image-box">
+              <img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&w=800&q=80" alt="Azure Cyber Glide Sneaker" loading="lazy" />
+            </div>
+
+            <div class="product-info">
+              <h4 class="product-title">Azure Cyber Glide</h4>
+              <div class="product-meta">
+                <div class="rating"><i data-lucide="star" style="width: 14px; height: 14px; fill: #fbbf24;"></i> 4.9 (275)</div>
+                <span>• Breathable Knit Mesh</span>
+              </div>
+              <div class="size-picker">
+                <span class="size-pill" onclick="selectSize(this)">US 8</span>
+                <span class="size-pill active" onclick="selectSize(this)">US 9</span>
+                <span class="size-pill" onclick="selectSize(this)">US 10</span>
+                <span class="size-pill" onclick="selectSize(this)">US 11</span>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <div class="price-tag">$144.99</div>
+              <button class="btn btn-blue btn-sm" onclick="addToCart('Azure Cyber Glide', 144.99, 'US 9', 'https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&w=600&q=80')">Add to Bag</button>
+            </div>
+          </div>
+
+          <!-- Shoe 6: Dual Matrix Hyper-Low -->
+          <div class="glass-panel product-card card-dual" data-category="dual">
+            <div class="card-badge-row">
+              <span class="badge badge-dual">⚡ Design Award</span>
+              <button class="wishlist-btn" onclick="toggleWishlist(this)" aria-label="Add to wishlist">
+                <i data-lucide="heart" style="width: 16px; height: 16px;"></i>
+              </button>
+            </div>
+            
+            <div class="product-image-box">
+              <img src="https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?auto=format&fit=crop&w=800&q=80" alt="Dual Matrix Hyper-Low Sneaker" loading="lazy" />
+            </div>
+
+            <div class="product-info">
+              <h4 class="product-title">Dual Matrix Hyper-Low</h4>
+              <div class="product-meta">
+                <div class="rating"><i data-lucide="star" style="width: 14px; height: 14px; fill: #fbbf24;"></i> 4.9 (490)</div>
+                <span>• Urban Low Profile</span>
+              </div>
+              <div class="size-picker">
+                <span class="size-pill" onclick="selectSize(this)">US 8</span>
+                <span class="size-pill active" onclick="selectSize(this)">US 9</span>
+                <span class="size-pill" onclick="selectSize(this)">US 10</span>
+                <span class="size-pill" onclick="selectSize(this)">US 11</span>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <div class="price-tag">$174.99</div>
+              <button class="btn btn-duality btn-sm" onclick="addToCart('Dual Matrix Hyper-Low', 174.99, 'US 9', 'https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?auto=format&fit=crop&w=600&q=80')">Add to Bag</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Vibe Matcher / Sneaker Quiz -->
+    <section id="vibe">
+      <div class="container">
+        <div class="vibe-box">
+          <div>
+            <span class="section-subtitle text-gradient">// SMART MATCH ENGINE</span>
+            <h2 class="font-heading" style="font-size: 2.4rem; margin: 10px 0 16px;">
+              What's Your Street Vibe?
+            </h2>
+            <p style="color: var(--text-muted); margin-bottom: 24px;">
+              Choose your style frequency to get an instant matched pair from the <strong>Shoes Wala</strong> vault.
+            </p>
+            
+            <div style="display: flex; gap: 14px;">
+              <button class="btn btn-red" onclick="matchVibe('red')">Match Red Energy</button>
+              <button class="btn btn-blue" onclick="matchVibe('blue')">Match Blue Chill</button>
+            </div>
+          </div>
+
+          <div class="vibe-split-controls">
+            <div class="vibe-card-select red" onclick="matchVibe('red')">
+              <div style="display: flex; align-items: center; justify-content: space-between;">
+                <h4 style="color: var(--red-primary); display: flex; align-items: center; gap: 8px;">
+                  <i data-lucide="flame" style="width: 20px; height: 20px;"></i> Crimson Intensity
+                </h4>
+                <span class="badge badge-red">Aggressive & Fast</span>
+              </div>
+              <p style="color: var(--text-muted); font-size: 0.88rem; margin-top: 8px;">
+                Bold high-contrast silhouettes built for sprinting, court dominance, and turning heads.
+              </p>
+            </div>
+
+            <div class="vibe-card-select blue" onclick="matchVibe('blue')">
+              <div style="display: flex; align-items: center; justify-content: space-between;">
+                <h4 style="color: var(--blue-secondary); display: flex; align-items: center; gap: 8px;">
+                  <i data-lucide="wind" style="width: 20px; height: 20px;"></i> Cobalt Cloud Precision
+                </h4>
+                <span class="badge badge-blue">Sleek & Tactical</span>
+              </div>
+              <p style="color: var(--text-muted); font-size: 0.88rem; margin-top: 8px;">
+                Ultra-plush zero-gravity cushioning engineered for all-day comfort and techwear looks.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Street Reviews -->
+    <section id="reviews">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle text-blue">// VERIFIED STREET REPUTATION</span>
+          <h2 class="section-title">What Sneakerheads Say</h2>
+          <p style="color: var(--text-muted);">Real feedback from collectors, athletes, and street stylists rocking Shoes Wala.</p>
+        </div>
+
+        <div class="reviews-grid">
+          <div class="glass-panel review-card">
+            <div class="reviewer-info">
+              <div class="reviewer-avatar">RK</div>
+              <div>
+                <h5 style="font-weight: 700;">Rohan Kapoor</h5>
+                <div style="color: #fbbf24; font-size: 0.8rem; display: flex; gap: 2px;">★★★★★</div>
+              </div>
+            </div>
+            <p style="color: var(--text-muted); font-size: 0.92rem;">
+              "The Duality High-Top is insane in person. The red and blue split styling catches everyone's eye, and the nitrogen sole feels like walking on clouds. 10/10 Shoes Wala!"
+            </p>
+          </div>
+
+          <div class="glass-panel review-card">
+            <div class="reviewer-info">
+              <div class="reviewer-avatar" style="background: linear-gradient(135deg, #00d2ff, #004bc4);">AS</div>
+              <div>
+                <h5 style="font-weight: 700;">Aanya Sharma</h5>
+                <div style="color: #fbbf24; font-size: 0.8rem; display: flex; gap: 2px;">★★★★★</div>
+              </div>
+            </div>
+            <p style="color: var(--text-muted); font-size: 0.92rem;">
+              "Delivery was crazy fast! Got my Cobalt Frost kicks within 24 hours. The packaging and custom red & blue laces made it feel like a luxury drop."
+            </p>
+          </div>
+
+          <div class="glass-panel review-card">
+            <div class="reviewer-info">
+              <div class="reviewer-avatar" style="background: linear-gradient(135deg, #ff2a5f, #b80d36);">VK</div>
+              <div>
+                <h5 style="font-weight: 700;">Vikram Malhotra</h5>
+                <div style="color: #fbbf24; font-size: 0.8rem; display: flex; gap: 2px;">★★★★★</div>
+              </div>
+            </div>
+            <p style="color: var(--text-muted); font-size: 0.92rem;">
+              "Finally a brand that nails the aggressive red theme without looking tacky. The Crimson Blaze has become my daily gym and street runner."
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Discount Banner -->
+    <section>
+      <div class="container">
+        <div class="glass-panel" style="background: radial-gradient(circle at 50% 50%, rgba(255, 42, 95, 0.2) 0%, rgba(0, 112, 243, 0.2) 60%, rgba(11, 15, 25, 0.95) 100%); padding: 60px 40px; text-align: center; border-radius: var(--radius-lg);">
+          <span class="badge badge-dual" style="margin-bottom: 16px;">🎁 LIMITED TIME VIP CODE</span>
+          <h2 class="font-heading" style="font-size: clamp(2rem, 3.8vw, 3rem); margin-bottom: 12px;">
+            Get <span class="text-red">20% OFF</span> Your First Drop
+          </h2>
+          <p style="color: var(--text-muted); max-width: 500px; margin: 0 auto 24px;">
+            Use checkout promo code <strong style="color: #fff; font-family: 'JetBrains Mono', monospace; background: rgba(255,255,255,0.1); padding: 2px 8px; border-radius: 4px;">SHOESWALA20</strong> for instant savings!
+          </p>
+          <a href="#catalog" class="btn btn-duality">Claim Your Discount</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Cart Slide-out Drawer -->
+  <div class="cart-drawer-overlay" id="cartOverlay" onclick="toggleCartDrawer()">
+    <div class="cart-drawer" onclick="event.stopPropagation()">
+      <div class="cart-header">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <i data-lucide="shopping-bag" style="color: var(--blue-secondary);"></i>
+          <h3 class="font-heading" style="font-size: 1.25rem;">Your Shoe Bag</h3>
+        </div>
+        <button class="close-cart-btn" onclick="toggleCartDrawer()">
+          <i data-lucide="x" style="width: 22px; height: 22px;"></i>
+        </button>
+      </div>
+
+      <div class="cart-items-list" id="cartItemsList">
+        <!-- Cart items injected dynamically via JS -->
+      </div>
+
+      <div class="cart-footer">
+        <div class="promo-box">
+          <input type="text" class="promo-input" id="promoCodeInput" placeholder="Promo Code (Try SHOESWALA20)">
+          <button class="btn btn-outline btn-sm" onclick="applyPromo()">Apply</button>
+        </div>
+
+        <div class="cart-total-row">
+          <span>Subtotal</span>
+          <span id="cartTotalDisplay">$349.98</span>
+        </div>
+
+        <button class="btn btn-duality" style="width: 100%;" onclick="openCheckoutModal()">
+          <span>Proceed to Secure Checkout</span>
+          <i data-lucide="arrow-right" style="width: 18px; height: 18px;"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Checkout Confirmation Modal -->
+  <div class="modal-overlay" id="checkoutModal">
+    <div class="modal-content">
+      <div style="width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, var(--red-primary), var(--blue-secondary)); display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+        <i data-lucide="check" style="color: #fff; width: 32px; height: 32px;"></i>
+      </div>
+      <h3 class="font-heading" style="font-size: 1.6rem; margin-bottom: 8px;">Order Dispatched!</h3>
+      <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 24px;">
+        Thank you for choosing <strong>Shoes Wala</strong>. Your limited edition kicks are being prepared with custom holographic dust bags and express tracking.
+      </p>
+      <button class="btn btn-duality" style="width: 100%;" onclick="closeCheckoutModal()">Back to Shoes Wala</button>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast">
+    <i data-lucide="check-circle" id="toastIcon" style="color: var(--blue-secondary); width: 20px; height: 20px;"></i>
+    <span id="toastMsg" style="font-size: 0.92rem; font-weight: 500;">Notification</span>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="logo-link" style="margin-bottom: 16px;">
+            <div class="logo-box">
+              <i data-lucide="zap" style="color: #fff; width: 22px; height: 22px;"></i>
+            </div>
+            <div class="logo-text">
+              <span class="text-red">SHOES</span> <span class="text-blue">WALA</span>
+            </div>
+          </div>
+          <p style="color: var(--text-muted); font-size: 0.9rem; max-width: 320px;">
+            The definitive red & blue sneaker portal. Street culture, cutting-edge ergonomics, and limited drops.
+          </p>
+        </div>
+
+        <div>
+          <h5 class="footer-heading">Collections</h5>
+          <ul class="footer-links">
+            <li><a href="#catalog">Crimson Flame Line</a></li>
+            <li><a href="#catalog">Cobalt Frost Line</a></li>
+            <li><a href="#catalog">Duality High-Tops</a></li>
+            <li><a href="#catalog">Retro Editions</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h5 class="footer-heading">Support</h5>
+          <ul class="footer-links">
+            <li><a href="#home" onclick="triggerToast('Size chart: True to US/UK Standard Fit')">Size & Fit Guide</a></li>
+            <li><a href="#home" onclick="triggerToast('Worldwide express shipping in 2-4 business days')">Shipping Info</a></li>
+            <li><a href="#home" onclick="triggerToast('30-Day Hassle-Free Returns on all drops')">30-Day Returns</a></li>
+            <li><a href="#home" onclick="triggerToast('Support team online 24/7 at support@shoeswala.com')">Contact Shoes Wala</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h5 class="footer-heading">Join The Hype</h5>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 12px;">Get drop alerts 10 minutes before public release.</p>
+          <div style="display: flex; gap: 8px;">
+            <input type="email" placeholder="Your email..." style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); padding: 8px 12px; border-radius: var(--radius-sm); color: #fff; outline: none; width: 100%;">
+            <button class="btn btn-red btn-sm" onclick="triggerToast('🔥 Subscribed to Shoes Wala VIP Drop Alerts!')">Join</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 SHOES WALA Inc. All rights reserved. Fire & Ice Sneaker Experience.</div>
+        <div style="display: flex; gap: 20px;">
+          <a href="#home" style="color: var(--text-dim); text-decoration: none;">Privacy</a>
+          <a href="#home" style="color: var(--text-dim); text-decoration: none;">Terms of Drop</a>
+          <a href="#home" style="color: var(--text-dim); text-decoration: none;">Authenticity Guarantee</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       JAVASCRIPT LOGIC
+       ========================================================================== */ -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // 1. Mouse Cursor Spotlight
+    const cursorGlow = document.getElementById('cursorGlow');
+    window.addEventListener('mousemove', (e) => {
+      cursorGlow.style.left = e.clientX + 'px';
+      cursorGlow.style.top = e.clientY + 'px';
+    });
+
+    // 2. Shopping Cart System State with Product Thumbnails
+    let cart = [
+      { 
+        title: 'SHOES WALA Duality High-Top Pro', 
+        price: 189.99, 
+        size: 'US 9', 
+        color: 'Dual Split',
+        img: 'https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=400&q=80'
+      },
+      { 
+        title: 'Cobalt Frost Drift', 
+        price: 159.99, 
+        size: 'US 9', 
+        color: 'Cobalt Blue',
+        img: 'https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?auto=format&fit=crop&w=400&q=80'
+      }
+    ];
+    let discountMultiplier = 1.0;
+
+    function renderCart() {
+      const cartList = document.getElementById('cartItemsList');
+      const cartBadge = document.getElementById('cartBadge');
+      const cartTotalDisplay = document.getElementById('cartTotalDisplay');
+
+      cartBadge.innerText = cart.length;
+      cartList.innerHTML = '';
+
+      if (cart.length === 0) {
+        cartList.innerHTML = `
+          <div style="text-align: center; padding: 40px 0; color: var(--text-muted);">
+            <i data-lucide="shopping-bag" style="width: 48px; height: 48px; margin-bottom: 12px; opacity: 0.4;"></i>
+            <p>Your shoe bag is empty!</p>
+          </div>
+        `;
+        cartTotalDisplay.innerText = '$0.00';
+        lucide.createIcons();
+        return;
+      }
+
+      let subtotal = 0;
+      cart.forEach((item, index) => {
+        subtotal += item.price;
+        const itemEl = document.createElement('div');
+        itemEl.className = 'cart-item';
+        itemEl.innerHTML = `
+          <div class="cart-item-img">
+            <img src="${item.img || 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=200&q=80'}" alt="${item.title}" />
+          </div>
+          <div class="cart-item-details">
+            <div class="cart-item-title">${item.title}</div>
+            <div style="font-size: 0.78rem; color: var(--text-dim);">${item.size} • ${item.color}</div>
+            <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+          </div>
+          <button class="cart-item-remove" onclick="removeFromCart(${index})" title="Remove item">
+            <i data-lucide="trash-2" style="width: 16px; height: 16px;"></i>
+          </button>
+        `;
+        cartList.appendChild(itemEl);
+      });
+
+      const finalTotal = subtotal * discountMultiplier;
+      cartTotalDisplay.innerText = `$${finalTotal.toFixed(2)}`;
+      lucide.createIcons();
+    }
+    renderCart();
+
+    function addToCart(title, price, variant, imgUrl) {
+      const fallbackImg = imgUrl || 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=400&q=80';
+      cart.push({ title, price, size: 'US 9', color: variant || 'Standard', img: fallbackImg });
+      renderCart();
+      triggerToast(`👟 Added "${title}" to your Bag!`);
+      // Brief drawer bounce
+      const btn = document.querySelector('.cart-btn');
+      btn.style.transform = 'scale(1.2)';
+      setTimeout(() => btn.style.transform = 'scale(1)', 200);
+    }
+
+    function removeFromCart(index) {
+      const removed = cart.splice(index, 1)[0];
+      renderCart();
+      triggerToast(`Removed "${removed.title}" from bag.`);
+    }
+
+    function toggleCartDrawer() {
+      const overlay = document.getElementById('cartOverlay');
+      overlay.classList.toggle('open');
+    }
+
+    function applyPromo() {
+      const input = document.getElementById('promoCodeInput').value.trim().toUpperCase();
+      if (input === 'SHOESWALA20' || input === 'DUAL20') {
+        discountMultiplier = 0.8;
+        renderCart();
+        triggerToast('🎉 Promo SHOESWALA20 applied! 20% discount activated.');
+      } else {
+        triggerToast('⚠️ Invalid Promo Code. Try "SHOESWALA20"');
+      }
+    }
+
+    function openCheckoutModal() {
+      if (cart.length === 0) {
+        triggerToast('Your bag is empty! Add a sneaker first.');
+        return;
+      }
+      toggleCartDrawer();
+      document.getElementById('checkoutModal').classList.add('open');
+    }
+
+    function closeCheckoutModal() {
+      document.getElementById('checkoutModal').classList.remove('open');
+      cart = [];
+      renderCart();
+    }
+
+    // 3. Hero Shoe Colorway Customizer with Dynamic Photo Swapping
+    const heroShoeData = {
+      dual: {
+        title: 'SHOES WALA Duality High-Top Pro',
+        img: 'https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=1000&q=85',
+        glow: 'radial-gradient(circle, var(--red-glow) 0%, var(--blue-glow) 50%, transparent 75%)',
+        msg: '⚡ Switched to Duality Split High-Top Edition!'
+      },
+      red: {
+        title: 'SHOES WALA Crimson Blaze Runner',
+        img: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1000&q=85',
+        glow: 'radial-gradient(circle, var(--red-glow) 0%, transparent 70%)',
+        msg: '🔥 Switched to Crimson Blaze Colorway!'
+      },
+      blue: {
+        title: 'SHOES WALA Cobalt Frost Performance',
+        img: 'https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?auto=format&fit=crop&w=1000&q=85',
+        glow: 'radial-gradient(circle, var(--blue-glow) 0%, transparent 70%)',
+        msg: '❄️ Switched to Cobalt Frost Colorway!'
+      }
+    };
+
+    function setHeroColorway(colorway, el) {
+      document.querySelectorAll('.color-dot').forEach(dot => dot.classList.remove('active'));
+      el.classList.add('active');
+
+      const heroShoeImg = document.getElementById('heroShoeImg');
+      const heroShoeTitle = document.getElementById('heroShoeTitle');
+      const heroStageGlow = document.getElementById('heroStageGlow');
+
+      const data = heroShoeData[colorway];
+      if (data) {
+        heroShoeImg.style.opacity = '0';
+        setTimeout(() => {
+          heroShoeImg.src = data.img;
+          heroShoeTitle.innerText = data.title;
+          heroStageGlow.style.background = data.glow;
+          heroShoeImg.style.opacity = '1';
+        }, 200);
+        triggerToast(data.msg);
+      }
+    }
+
+    // 4. Catalog Filtering
+    function filterCatalog(category, el) {
+      document.querySelectorAll('.filter-tab').forEach(tab => tab.classList.remove('active'));
+      if (el) el.classList.add('active');
+
+      const products = document.querySelectorAll('.product-card');
+      products.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-category') === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // 5. Size Selection
+    function selectSize(el) {
+      const parent = el.parentElement;
+      parent.querySelectorAll('.size-pill').forEach(pill => pill.classList.remove('active'));
+      el.classList.add('active');
+    }
+
+    // 6. Wishlist Toggle
+    function toggleWishlist(el) {
+      el.classList.toggle('active');
+      const icon = el.querySelector('i');
+      if (el.classList.contains('active')) {
+        el.style.color = 'var(--red-primary)';
+        el.style.background = 'rgba(255, 42, 95, 0.2)';
+        triggerToast('❤️ Saved sneaker to your Favorites list!');
+      } else {
+        el.style.color = 'var(--text-muted)';
+        el.style.background = 'rgba(255, 255, 255, 0.05)';
+      }
+    }
+
+    // 7. Vibe Matcher
+    function matchVibe(vibe) {
+      if (vibe === 'red') {
+        filterCatalog('red', document.querySelectorAll('.filter-tab')[1]);
+        triggerToast('🔥 Matched with Crimson Flame Collection!');
+      } else {
+        filterCatalog('blue', document.querySelectorAll('.filter-tab')[2]);
+        triggerToast('❄️ Matched with Cobalt Frost Collection!');
+      }
+      window.scrollTo({ top: document.getElementById('catalog').offsetTop - 80, behavior: 'smooth' });
+    }
+
+    // 8. Toast Notifications
+    const toast = document.getElementById('toast');
+    const toastMsg = document.getElementById('toastMsg');
+    let toastTimeout;
+
+    function triggerToast(message) {
+      clearTimeout(toastTimeout);
+      toastMsg.innerText = message;
+      toast.classList.add('show');
+      toastTimeout = setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3500);
+    }
+  </script>
+</body>
+</html>
